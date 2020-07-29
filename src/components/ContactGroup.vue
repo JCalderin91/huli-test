@@ -32,7 +32,7 @@
               @input="setUser(user)"
               label="Teléfono"
               class="phone-number"
-              v-mask="mask(phone.prefix)"
+              v-mask="phoneMask(phone.prefix)"
               :rules="[phoneRule(phone.prefix)]"
             ></v-text-field>
           </v-col>
@@ -71,10 +71,10 @@ export default {
         return pattern.test(value) || "Formato de correo incorrecto";
       },
       crNumber: (value) => {
-        return value.length >= 9 || "Mínimo 8 dígitos";
+        return value.length >= 9 || "Mínimo 8 dígitos"; // Añadindo los separadores
       },
       mxNumber: (value) => {
-        return value.length >= 12 || "Mínimo 10 dígitos";
+        return value.length >= 12 || "Mínimo 10 dígitos"; // Añadindo los separadores
       },
     },
   }),
@@ -84,7 +84,7 @@ export default {
       quitPhone: "quitPhone",
       setUser: "setUser",
     }),
-    mask(prefix) {
+    phoneMask(prefix) {
       return prefix == "506" ? "####-####" : "###-###-####";
     },
     phoneRule(prefix) {
