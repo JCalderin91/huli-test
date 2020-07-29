@@ -1,10 +1,10 @@
 <template>
-  <div class="contact-info mt-4">
-    <h4>Datos de contacto</h4>
+  <div class="contact-info mt-5">
+    <h2>Datos de contacto</h2>
     <v-row>
       <v-col cols="12">
         <v-row v-for="(phone, key) in user.contact_info.phones" :key="key">
-          <v-col cols="12" md="6" class="phone-group">
+          <v-col order="2" order-sm="1" cols="12" md="6" class="phone-group">
             <v-select
               v-model="phone.type"
               @change="setUser(user)"
@@ -35,7 +35,7 @@
               v-mask="'####-####'"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="6" v-if="key===0">
+          <v-col order-sm="2" cols="12" md="6" v-if="key===0">
             <v-text-field
               v-model="user.contact_info.email"
               @input="setUser(user)"
@@ -45,10 +45,10 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" class="d-flex justify-space-between">
-        <v-btn @click="addPhone()" text color="primary">agregar otro teléfono</v-btn>
+      <v-col cols="12" class="d-flex justify-center justify-sm-space-between flex-wrap">
+        <v-btn @click="addPhone()" class="mb-2 mb-sm-0" text color="primary">agregar otro teléfono</v-btn>
         <v-btn
-          v-if="user.contact_info.phones.length>0"
+          v-if="user.contact_info.phones.length>1"
           @click="quitPhone()"
           text
           color="error"
@@ -89,15 +89,15 @@ export default {
 <style lang="scss" scoped>
 .phone-group {
   .phone-type {
-    width: 15%;
+    width: 52px;
     display: inline-block;
   }
   .phone-prefix {
-    width: 20%;
+    width: 75px;
     display: inline-block;
   }
   .phone-number {
-    width: 65%;
+    width: calc(100% - 127px);
     display: inline-block;
   }
 }

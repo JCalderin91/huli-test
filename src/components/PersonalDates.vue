@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" md="2">
+    <v-col cols="12" md="2" class="d-flex justify-center">
       <image-input />
     </v-col>
     <v-col cols="12" md="10">
@@ -11,7 +11,7 @@
         <v-col cols="12" @input="setUser(user)" md="6">
           <v-text-field label="Apellidos" v-model="user.last_name"></v-text-field>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="text-center text-sm-left">
           <v-btn
             outlined
             class="mr-2"

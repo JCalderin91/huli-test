@@ -4,7 +4,13 @@
     <div class="overlay" @click="input()">
       <v-icon class="icon">mdi-camera</v-icon>
     </div>
-    <input type="file" ref="inputImage" @change="onFileChange" class="d-none" />
+    <input
+      accept="image/x-png, image/gif, image/jpeg"
+      type="file"
+      ref="inputImage"
+      @change="onFileChange"
+      class="d-none"
+    />
   </div>
 </template>
 <script>
@@ -48,14 +54,15 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(51, 51, 51, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(51, 51, 51, 0.404);
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0.3;
     &:hover {
-      background-color: rgba(51, 51, 51, 0.5);
+      opacity: 0.8;
     }
     .icon {
       font-size: 3rem;

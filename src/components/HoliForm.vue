@@ -1,7 +1,9 @@
 <template>
   <div id="holi-form">
     <v-card elevation="2" max-width="900">
-      <v-card-title>Datos personales</v-card-title>
+      <v-card-text>
+        <h2>Datos personales</h2>
+      </v-card-text>
       <v-card-text>
         <personal-dates />
         <identification-group />

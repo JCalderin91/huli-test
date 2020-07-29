@@ -1,11 +1,11 @@
 <template>
-  <section class="blood-types">
+  <section class="blood-types pb-5">
     <p>Tipo de sangre</p>
-    <div class="blood-group mt-2">
+    <div class="blood-group mt-2 text-center text-sm-left">
       <v-btn
         @click="setBlood(blood)"
         :class="{'primary':user.blood==blood}"
-        class="mr-2"
+        class="mr-2 mb-2"
         outlined
         v-for="(blood, key) in blood_group"
         :key="key"

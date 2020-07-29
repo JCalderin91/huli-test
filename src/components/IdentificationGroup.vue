@@ -16,11 +16,17 @@
           @input="setUser(user)"
           hide-details
           label="Numero de identificación"
+          v-mask="'#-###-###'"
         ></v-text-field>
       </v-col>
     </template>
-    <v-col cols="12" class="d-flex justify-space-between">
-      <v-btn @click="addIdentification()" text color="primary">agregar otra identificación</v-btn>
+    <v-col cols="12" class="d-flex justify-center justify-sm-space-between flex-wrap">
+      <v-btn
+        @click="addIdentification()"
+        class="mb-2 mb-sm-0"
+        text
+        color="primary"
+      >agregar otra identificación</v-btn>
       <v-btn
         v-if="user.identifications.length > 1"
         @click="quitIdentification()"
