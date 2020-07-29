@@ -17,8 +17,8 @@ export default new Vuex.Store({
       blood: null,
       contact_info: {
         phones: [{
-          type: '',
-          prefix: "",
+          type: "mdi-cellphone",
+          prefix: "506",
           number: "",
         }, ],
         email: "",
@@ -40,7 +40,10 @@ export default new Vuex.Store({
       localStorage.setItem('user', JSON.stringify(state.user))
     },
     addPhone(state) {
-      state.user.contact_info.phones.push({})
+      state.user.contact_info.phones.push({
+        type: "mdi-cellphone",
+        prefix: "506"
+      })
     },
     quitPhone(state) {
       state.user.contact_info.phones.pop()

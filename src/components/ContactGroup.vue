@@ -2,7 +2,7 @@
   <div class="contact-info mt-5">
     <h2>Datos de contacto</h2>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="pb-0">
         <v-row v-for="(phone, key) in user.contact_info.phones" :key="key">
           <v-col order="2" order-sm="1" cols="12" md="6" class="phone-group">
             <v-select
@@ -46,7 +46,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" class="d-flex justify-center justify-sm-space-between flex-wrap">
+      <v-col cols="12" class="d-flex justify-center justify-sm-space-between flex-wrap pt-0">
         <v-btn @click="addPhone()" class="mb-2 mb-sm-0" text color="primary">agregar otro teléfono</v-btn>
         <v-btn
           v-if="user.contact_info.phones.length>1"
@@ -63,7 +63,7 @@
 import { mapState, mapMutations } from "vuex";
 export default {
   data: () => ({
-    phone_types: ["mdi-phone", "mdi-cellphone"],
+    phone_types: ["mdi-cellphone", "mdi-phone"],
     phone_prefix: ["506", "52"],
     rules: {
       email: (value) => {
