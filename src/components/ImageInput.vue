@@ -22,10 +22,15 @@ export default {
     },
     onFileChange(e) {
       const file = e.target.files[0];
-      this.$store.commit("setUser", {
-        ...this.user,
-        photo: URL.createObjectURL(file),
-      });
+      const self = this;
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        self.$store.commit("setUser", {
+          ...self.user,
+          photo: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
     },
   },
   computed: {

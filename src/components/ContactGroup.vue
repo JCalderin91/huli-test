@@ -32,14 +32,15 @@
               @input="setUser(user)"
               label="Teléfono"
               class="phone-number"
-              v-mask="'####-####'"
+              v-mask="mask(phone.prefix)"
+              :rules="[phoneRule(phone.prefix)]"
             ></v-text-field>
           </v-col>
           <v-col order-sm="2" cols="12" md="6" v-if="key===0">
             <v-text-field
               v-model="user.contact_info.email"
               @input="setUser(user)"
-              label="Correo electronico"
+              label="Correo electrónico"
               :rules="[rules.email]"
             ></v-text-field>
           </v-col>
@@ -69,6 +70,12 @@ export default {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(value) || "Formato de correo incorrecto";
       },
+      crNumber: (value) => {
+        return value.length >= 9 || "Mínimo 8 dígitos";
+      },
+      mxNumber: (value) => {
+        return value.length >= 12 || "Mínimo 10 dígitos";
+      },
     },
   }),
   methods: {
@@ -77,6 +84,12 @@ export default {
       quitPhone: "quitPhone",
       setUser: "setUser",
     }),
+    mask(prefix) {
+      return prefix == "506" ? "####-####" : "###-###-####";
+    },
+    phoneRule(prefix) {
+      return prefix === "506" ? this.rules.crNumber : this.rules.mxNumber;
+    },
   },
   computed: {
     ...mapState({
